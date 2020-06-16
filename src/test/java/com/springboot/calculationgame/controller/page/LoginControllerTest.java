@@ -1,4 +1,4 @@
-package com.springboot.calculationgame.controller;
+package com.springboot.calculationgame.controller.page;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
