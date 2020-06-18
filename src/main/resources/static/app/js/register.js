@@ -27,11 +27,12 @@ let register = {
     ajax: function (url, method, data) {
         $.ajax({
             url : url,
+            contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
             method: method
         }).done(function (data) {
-            alert('성공');
+            window.location.href='/login'
         }).fail(function () {
             alert('실패');
         });

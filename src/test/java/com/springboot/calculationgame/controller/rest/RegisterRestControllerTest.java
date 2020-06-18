@@ -1,44 +1,49 @@
 package com.springboot.calculationgame.controller.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springboot.calculationgame.domain.user.UserRepository;
+import com.springboot.calculationgame.domain.user.User;
 import com.springboot.calculationgame.dto.UserInfo;
+import com.springboot.calculationgame.service.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-//@DataJpaTest
 public class RegisterRestControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-    @Autowired
-    UserRepository userRepository;
+    @MockBean
+    private UserService userService;
 
     @Test
     public void user_생성() throws Exception {
+        UserInfo userInfo = new UserInfo("username","password");
         String json = new ObjectMapper()
-                .writeValueAsString(new UserInfo("username","password"));
+                .writeValueAsString(userInfo);
+        when(userService.create(any(User.class))).thenReturn(1l);
+
         MockHttpServletResponse response = mockMvc.perform(
                 post("/user")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isOk())
                 .andReturn().getResponse();
-        Long responseId =  Long.parseLong(response.getContentAsString());
-        assertThat(responseId).isGreaterThan(0l);
+
+        Long id =  Long.parseLong(response.getContentAsString());
+        assertThat(id).isEqualTo(1l);
+
     }
 }

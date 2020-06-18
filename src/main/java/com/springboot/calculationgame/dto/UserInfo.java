@@ -1,10 +1,10 @@
 package com.springboot.calculationgame.dto;
 
 import com.springboot.calculationgame.domain.user.User;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
+@ToString
 @RequiredArgsConstructor
 public class UserInfo {
 
