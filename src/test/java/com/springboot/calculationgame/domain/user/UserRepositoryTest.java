@@ -43,7 +43,7 @@ public class UserRepositoryTest {
 
         userRepository.save(user);
 
-        Optional<User> userOpt = userRepository.findUserByUsername("username");
+        Optional<User> userOpt = userRepository.findUserByUsernameAndPassword("username", "password");
         assertThat(userOpt.get()).isEqualToIgnoringGivenFields(user,"id");
     }
 
