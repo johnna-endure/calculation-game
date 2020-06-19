@@ -26,11 +26,17 @@ public class UserService {
     /**
      * 유저가 등록된 유저인지 판별
      * @param user User 엔티티
-     * @return 등록된 유저라면 true, 아니라면 false
+     * @return 등록된 유저라면 그 유저의 id, 아니라면 -1l
      */
-    public boolean checkUser(User user) {
-        Optional<User> userOpt = userRepository.findUserByUsername(user.getUsername());
-        return userOpt.map(u -> true).orElseGet(() -> false);
+    public Long checkUser(User user) {
+        Optional<User> userOpt = userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+
+        return userOpt.map(u -> u.getId())
+                .orElseGet(() -> -1l);
+    }
+
+    public Optional<User> findUserById(Long id) {
+        return userRepository.findById(id);
     }
 
 }

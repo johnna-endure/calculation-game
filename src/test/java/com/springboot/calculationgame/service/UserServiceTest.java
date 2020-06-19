@@ -57,10 +57,10 @@ public class UserServiceTest {
         userRepository.save(loginUserInfo.toEntity());
 
         //when
-        boolean ret = userService.checkUser(loginUserInfo.toEntity());
+        Long id = userService.checkUser(loginUserInfo.toEntity());
 
         //then
-        assertThat(ret).isTrue();
+        assertThat(id).isGreaterThan(0l);
     }
 
     @Test
@@ -69,10 +69,10 @@ public class UserServiceTest {
         UserInfo loginUserInfo = new UserInfo("whoareyou","1234");
 
         //when
-        boolean ret = userService.checkUser(loginUserInfo.toEntity());
+        Long id = userService.checkUser(loginUserInfo.toEntity());
 
         //then
-        assertThat(ret).isFalse();
+        assertThat(id).isEqualTo(-1);
     }
 
 }
