@@ -42,7 +42,7 @@ public class LoginRestControllerTest {
     @Test
     public void loginCheck_로그인_정보가_일치하는경우() throws Exception {
         UserInfo userInfo = new UserInfo("username", "1234");
-        when(userService.checkUser(any(User.class))).thenReturn(true);
+        when(userService.checkUser(any(User.class))).thenReturn(1l);
 
         MockHttpServletResponse response = mockMvc.perform(
                 post("/user/check")
@@ -52,13 +52,13 @@ public class LoginRestControllerTest {
                 .andExpect(status().isOk())
                 .andReturn().getResponse();
 
-        assertThat(response.getContentAsString()).isEqualTo("true");
+        assertThat(response.getContentAsString()).isEqualTo("1");
     }
 
     @Test
     public void loginCheck_로그인_정보가_일치하지않는경우() throws Exception {
         UserInfo userInfo = new UserInfo("username", "1234");
-        when(userService.checkUser(any(User.class))).thenReturn(false);
+        when(userService.checkUser(any(User.class))).thenReturn(-1l);
 
         MockHttpServletResponse response = mockMvc.perform(
                 post("/user/check")
@@ -68,6 +68,6 @@ public class LoginRestControllerTest {
                 .andExpect(status().isOk())
                 .andReturn().getResponse();
 
-        assertThat(response.getContentAsString()).isEqualTo("false");
+        assertThat(response.getContentAsString()).isEqualTo("-1");
     }
 }

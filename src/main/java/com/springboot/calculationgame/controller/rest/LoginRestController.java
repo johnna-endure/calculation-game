@@ -4,6 +4,7 @@ import com.springboot.calculationgame.dto.UserInfo;
 import com.springboot.calculationgame.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
@@ -13,7 +14,7 @@ public class LoginRestController {
     private final UserService userService;
 
     @PostMapping("/user/check")
-    public boolean loginCheck(UserInfo userInfo) {
+    public Long loginCheck(@RequestBody UserInfo userInfo) {
         return userService.checkUser(userInfo.toEntity());
     }
 
