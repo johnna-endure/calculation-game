@@ -31,8 +31,8 @@ let register = {
             data: JSON.stringify(data),
             dataType: 'json',
             method: method
-        }).done(function (data) {
-            window.location.href='/login'
+        }).done(function (id) {
+            window.location.href='/game/'+id;
         }).fail(function () {
             alert('실패');
         });
