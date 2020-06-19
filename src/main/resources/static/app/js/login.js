@@ -23,8 +23,12 @@ let login = {
             data: JSON.stringify(data),
             dataType: 'json',
             method: method
-        }).done(function (data) {
-            window.location.href="/game"
+        }).done(function (id) {
+            if(id !== -1){
+                window.location.href = "/game/" + id;
+                return;
+            }
+            alert('로그인 실패');
         }).fail(function () {
             alert('로그인 실패');
         });
