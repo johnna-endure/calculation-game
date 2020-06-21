@@ -1,7 +1,7 @@
-package com.springboot.calculationgame.controller.rest;
+package com.springboot.calculationgame.web.controller.rest;
 
-import com.springboot.calculationgame.dto.UserInfo;
-import com.springboot.calculationgame.service.user.UserService;
+import com.springboot.calculationgame.web.dto.UserInfo;
+import com.springboot.calculationgame.web.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

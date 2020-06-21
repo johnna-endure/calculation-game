@@ -1,9 +1,9 @@
-package com.springboot.calculationgame.controller.rest;
+package com.springboot.calculationgame.web.controller.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.calculationgame.domain.user.User;
-import com.springboot.calculationgame.dto.UserInfo;
-import com.springboot.calculationgame.service.user.UserService;
+import com.springboot.calculationgame.web.dto.UserInfo;
+import com.springboot.calculationgame.web.service.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

@@ -1,9 +1,9 @@
-package com.springboot.calculationgame.service;
+package com.springboot.calculationgame.web.service;
 
 import com.springboot.calculationgame.domain.user.User;
 import com.springboot.calculationgame.domain.user.UserRepository;
-import com.springboot.calculationgame.dto.UserInfo;
-import com.springboot.calculationgame.service.user.UserService;
+import com.springboot.calculationgame.web.dto.UserInfo;
+import com.springboot.calculationgame.web.service.user.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

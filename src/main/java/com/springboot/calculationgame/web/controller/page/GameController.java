@@ -1,7 +1,7 @@
-package com.springboot.calculationgame.controller.page;
+package com.springboot.calculationgame.web.controller.page;
 
 import com.springboot.calculationgame.domain.user.User;
-import com.springboot.calculationgame.service.user.UserService;
+import com.springboot.calculationgame.web.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

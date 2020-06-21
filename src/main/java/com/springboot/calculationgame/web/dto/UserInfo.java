@@ -1,4 +1,4 @@
-package com.springboot.calculationgame.dto;
+package com.springboot.calculationgame.web.dto;
 
 import com.springboot.calculationgame.domain.user.User;
 import lombok.*;

@@ -1,4 +1,4 @@
-package com.springboot.calculationgame.controller.page;
+package com.springboot.calculationgame.web.controller.page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

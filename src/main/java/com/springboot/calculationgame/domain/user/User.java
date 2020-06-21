@@ -3,10 +3,11 @@ package com.springboot.calculationgame.domain.user;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
-@Getter
+@Getter @ToString
 @NoArgsConstructor
 @Entity
 public class User {

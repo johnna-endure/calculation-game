@@ -1,4 +1,4 @@
-package com.springboot.calculationgame.service.user;
+package com.springboot.calculationgame.web.service.user;
 
 import com.springboot.calculationgame.domain.user.User;
 import com.springboot.calculationgame.domain.user.UserRepository;
