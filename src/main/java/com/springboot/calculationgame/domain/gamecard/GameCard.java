@@ -21,11 +21,8 @@ public class GameCard {
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
-    @Column(nullable = false)
-    private String problem;
-
-    @Column(nullable = false)
-    private int answer;
+    @Embedded
+    private Problem problem;
 
     @Column(nullable = false)
     private boolean solved;
@@ -34,9 +31,8 @@ public class GameCard {
     private long score;
 
     @Builder
-    public GameCard(String problem, int answer, boolean solved, long score) {
+    public GameCard(Problem problem, boolean solved, long score) {
         this.problem = problem;
-        this.answer = answer;
         this.solved = solved;
         this.score = score;
     }
