@@ -5,14 +5,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.Columns;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
 @Getter @ToString
 @NoArgsConstructor
 @Entity
+@Table(name = "GAME_CARD")
 public class GameCard {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CARD_ID")
     private Long id;
 
@@ -25,6 +28,7 @@ public class GameCard {
     private Problem problem;
 
     @Column(nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean solved;
 
     public GameCard(User user, Problem problem) {

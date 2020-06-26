@@ -14,9 +14,10 @@ import java.util.List;
 @Getter @ToString
 @NoArgsConstructor
 @Entity
+@Table(name = "USER")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
     private Long id;
 

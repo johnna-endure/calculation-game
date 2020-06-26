@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GameCardRepository extends JpaRepository<GameCard, Long> {
     //서브쿼리를 이용해서 일단 구현해놓음. 나중에 다른 방법으로 해볼것
-    @Query(value = "SELECT * FROM (SELECT * FROM GAME_CARD WHERE USER_ID = ?1) ORDER BY CARD_ID DESC LIMIT 5"
+    @Query(value = "select * from (select * from game_card WHERE user_id = ?1) as t2 order by card_id DESC limit 5"
             ,nativeQuery = true)
     List<GameCard> get5GameCardsByUser_Id(Long userId);
 }
