@@ -1,5 +1,6 @@
 package com.springboot.calculationgame.web.service.user;
 
+import com.springboot.calculationgame.domain.score.Score;
 import com.springboot.calculationgame.domain.user.User;
 import com.springboot.calculationgame.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ public class UserService {
      */
     @Transactional
     public Long create(User user) {
+        user.setScore(new Score());
         return userRepository.save(user).getId();
     }
 

@@ -1,5 +1,6 @@
 package com.springboot.calculationgame.web.controller.page;
 
+import com.springboot.calculationgame.domain.score.Score;
 import com.springboot.calculationgame.domain.user.User;
 import com.springboot.calculationgame.web.service.user.UserService;
 import org.junit.jupiter.api.Test;
@@ -31,11 +32,10 @@ public class GameControllerTest {
     public void loadGamePage_페이지_로딩_및_model검증_테스트() throws Exception {
 
         when(userService.findUserById(anyLong()))
-                .thenReturn(Optional.of(new User("name", "pw")));
+                .thenReturn(Optional.of(new User("name", "pw", new Score())));
 
         mockMvc.perform(get("/game/1"))
                 .andExpect(status().isOk())
-                .andExpect(model().attributeExists("username"));
-
+                .andExpect(model().attributeExists("username", "problem"));
     }
 }

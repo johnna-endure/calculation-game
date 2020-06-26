@@ -12,26 +12,27 @@
 <!--문제 푸는 영역-->
     <br><br>
     <div id="problem-section">
-        <input type="text" class="input-sm" id="problem" readonly />
+        <input type="text" class="input-sm" id="problem-view" value="{{problem}}" readonly/>
         <input type="text" class="input-sm" id="answer" placeholder="정답을 입력하세요"/>
-        <button type="button" id="submit">정답 제출</button>
+        <button type="button" id="submit-answer-button">정답 제출</button>
     </div>
 <!--이전에 풀었던 문제 리스트-->
     <br><br><br>
+<h3>점수 : <span id = "score-view"/></h3>
     <div id="problem-list-section">
+        <span id="score-view"></span>
         <table class="table table-bordered">
             <thead>
                 <th>문제</th>
+                <th>제출한 답</th>
                 <th>정답 여부</th>
-                <th>점수</th>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody id="gamecard-list-view"></tbody>
         </table>
     </div>
 
-<script src="/jquery/jquery_comp.js"></script>
-<script src="/bootstrap/js/bootstrap.min.js"></script>
-<script src="/app/js/game.js"></script>
+    <script src="/jquery/jquery_comp.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/app/js/game.js"></script>
 </body>
 </html>

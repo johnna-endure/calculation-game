@@ -24,4 +24,6 @@ public class Problem {
 
     @Column(nullable = false)
     private int answer;
+
+
 }

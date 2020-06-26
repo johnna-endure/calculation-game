@@ -12,12 +12,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class GameCard {
-
     @Id @GeneratedValue
     @Column(name = "CARD_ID")
     private Long id;
 
-    @ManyToOne
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
@@ -27,17 +27,15 @@ public class GameCard {
     @Column(nullable = false)
     private boolean solved;
 
-    @Column(nullable = false)
-    private long score;
-
-    @Builder
-    public GameCard(Problem problem, boolean solved, long score) {
+    public GameCard(User user, Problem problem) {
+        ProblemChecker checker = new ProblemChecker();
+        this.solved = problem.getAnswer() == checker.getAnswer(problem.getExpression());
         this.problem = problem;
-        this.solved = solved;
-        this.score = score;
+        setBiDirectionalRelationWith(user);
     }
 
-    public void setUser(User user){
+    private void setBiDirectionalRelationWith(User user) {
         this.user = user;
+        user.getGameCards().add(this);
     }
 }

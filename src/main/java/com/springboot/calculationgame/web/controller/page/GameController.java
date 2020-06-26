@@ -1,5 +1,6 @@
 package com.springboot.calculationgame.web.controller.page;
 
+import com.springboot.calculationgame.domain.gamecard.ProblemGenerator;
 import com.springboot.calculationgame.domain.user.User;
 import com.springboot.calculationgame.web.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,10 @@ public class GameController {
     @GetMapping("/game/{id}")
     public String loadGamePage(@PathVariable Long id, Model model) {
         User user = userService.findUserById(id).get();
+
+        ProblemGenerator generator = new ProblemGenerator();
+        model.addAttribute("problem", generator.createExpression());
+
         model.addAttribute("username", user.getUsername());
         return "game";
     }

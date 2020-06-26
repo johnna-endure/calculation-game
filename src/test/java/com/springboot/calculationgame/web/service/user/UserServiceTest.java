@@ -1,9 +1,9 @@
-package com.springboot.calculationgame.web.service;
+package com.springboot.calculationgame.web.service.user;
 
+import com.springboot.calculationgame.domain.score.Score;
 import com.springboot.calculationgame.domain.user.User;
 import com.springboot.calculationgame.domain.user.UserRepository;
 import com.springboot.calculationgame.web.dto.UserInfo;
-import com.springboot.calculationgame.web.service.user.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,11 +43,15 @@ public class UserServiceTest {
                 .username("username")
                 .password("password")
                 .build();
+        user.setScore(new Score());
         long id = userService.create(user);
         assertThat(id).isGreaterThan(0);
 
         User saved = userRepository.findById(id).orElseThrow(NoSuchElementException::new);
-        assertThat(saved).isEqualToIgnoringGivenFields(user,"id");
+        assertThat(saved).isEqualToComparingOnlyGivenFields(user,"username");
+        assertThat(saved).isEqualToComparingOnlyGivenFields(user,"password");
+        assertThat(saved.getScore().getTotal()).isEqualTo(0);
+
     }
 
     @Test
