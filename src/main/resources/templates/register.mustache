@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>회원가입 페이지</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1>회원가입 페이지</h1>
+    <br>
+<!--    회원 정보 입력-->
+    <div class="input-group">
+        <label class="input-group-addon" for="username">닉네임 : </label>
+        <input type="text" class="input-sm" id="username" placeholder="nickname" required/>
+    </div>
+    <div class="input-group">
+        <label class="input-group-addon">비밀번호 :</label>
+        <input type="password" class="input-sm" id="password" required/>
+    </div>
+    <button type="button" class="btn btn-default" id="register-button">회원가입</button>
+    <a href="/login" class="btn btn-default">로그인 화면으로</a>
+
+    <script src="/jquery/jquery_comp.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/app/js/register.js"></script>
+</body>
+</html>
